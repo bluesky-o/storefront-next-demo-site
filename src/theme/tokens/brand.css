@@ -1,0 +1,185 @@
+/*
+ * Market Street brand palette — NOT in Figma JSON.
+ * These are storefront-theme primitives owned by the brand team; downstream
+ * tokens may reference them, but Figma's design-system file does not define
+ * them as variables.
+ */
+:root {
+    /* brand primary (e.g. Write a Review button) */
+    --brand-primary: #221E1B;
+    --brand-primary-hover: #5C1A1B;
+
+    /* Market Street Brand Colors */
+    --brand-black: #000000;
+    --brand-black-off: #121212;
+    --brand-black-charcoal: #242424;
+    --brand-white: #ffffff;
+    --brand-white-bone: #fafaf9;
+    --brand-white-ivory: #fcfcfc;
+
+    /*
+     * Hero overlay scrims — brand-tinted gradients layered between a hero image and its text
+     * for WCAG 1.4.3 legibility. Defined per vertical (next to --brand-black/white so they
+     * travel together) rather than as a TS literal, so the geometry is brand-overridable and
+     * an omitted brand color can't silently collapse the whole scrim to `none`.
+     *   --hero-overlay-dark/-light : Hero's directional two-gradient treatment.
+     *   --hero-scrim               : the carousel slide's uniform floor (text can sit anywhere).
+     */
+    --hero-overlay-dark: linear-gradient(to top, color-mix(in oklch, var(--brand-black) 30%, transparent) 0%, transparent 100%),
+        linear-gradient(to right, color-mix(in oklch, var(--brand-black) 60%, transparent) 0%, color-mix(in oklch, var(--brand-black) 30%, transparent) 50%, transparent 100%);
+    --hero-overlay-light: linear-gradient(to top, color-mix(in oklch, var(--brand-white) 30%, transparent) 0%, transparent 100%),
+        linear-gradient(to right, color-mix(in oklch, var(--brand-white) 60%, transparent) 0%, color-mix(in oklch, var(--brand-white) 30%, transparent) 50%, transparent 100%);
+    --hero-scrim: color-mix(in oklch, var(--brand-black) 60%, transparent);
+    --brand-gray-50: #fafafa;
+    --brand-gray-100: #f5f5f5;
+    --brand-gray-200: #ededed;
+    --brand-gray-300: #e5e5e5;
+    --brand-gray-400: #d4d4d4;
+    --brand-gray-500: #9e9e9e;
+    --brand-gray-600: #757575;
+    --brand-gray-700: #616161;
+    --brand-gray-800: #424242;
+    --brand-gray-900: #212121;
+
+    /*
+     * Dark surfaces (style guide v2): After Hours, Ready near you, Next drop,
+     * announcement bar, bag dock, toast.
+     */
+    --dark-bg: #1E1A18;                 /* design: --color-dark-bg · night background */
+    --dark-panel: #2C2522;              /* design: --color-dark-panel · After Hours campaign panel */
+    --dark-tile: #262120;               /* design: --color-dark-tile · countdown tiles */
+    --dark-line: #3A322E;               /* design: --color-dark-line · dividers, thumb frames on dark */
+    --dark-line-strong: #4A403B;        /* design: --color-dark-line-strong · inactive tabs, outline buttons on dark */
+    --dark-underline: #6E625A;          /* design: --color-dark-underline · link underline on dark */
+    --on-dark-text: #F3EDE6;            /* design: --color-on-dark-text · text and light buttons on dark */
+    --on-dark-muted: #C3B8AC;           /* design: --color-on-dark-muted · secondary text on dark */
+    --on-dark-accent: #E3B9B1;          /* design: --color-on-dark-accent · italic accent, "Reserved" on dark */
+
+    /*
+     * Supporting lines, links and editorial (style guide v2).
+     */
+    /* links */
+    --link-underline: #B8AEA2;          /* design: --color-link-underline · text-decoration-color on links */
+
+    /* rose surfaces (newsletter, coupons) */
+    --rose-border: #D9C4BF;             /* design: --color-rose-border · newsletter input on rose */
+    --rose-line: #E8D6D2;               /* design: --color-rose-line · coupon cards, dividers on rose */
+    --rose-well: #EDDDD8;               /* design: --color-rose-well · image well inside rose cards */
+
+    /* CLP notebook page */
+    --paper-text: #4E4842;              /* design: --color-paper-text · CLP notebook body copy */
+    --pencil: #8C8278;                  /* design: --color-pencil · CLP page numbers, over-budget price */
+    --notebook-paper: #F6F1E9;          /* design: --color-notebook-paper · CLP notebook page */
+    --notebook-margin: #EBC9C3;         /* design: --color-notebook-margin · CLP red margin line */
+    --notebook-rule: #EAE3D9;           /* design: --color-notebook-rule · CLP ruled lines (desktop) */
+    --notebook-rule-mobile: #E6DED3;    /* design: --color-notebook-rule-mobile · CLP ruled lines (mobile) */
+
+    /* most-loved chart chips (text uses --success / --warning) */
+    --trend-up-bg: #E7F1E8;             /* design: --color-trend-up-bg */
+    --trend-down-bg: #F7E9E1;           /* design: --color-trend-down-bg */
+
+    /* product illustrations */
+    --buckle: #B9A57A;                  /* design: --color-buckle · belt buckle */
+
+    /*
+     * Overlays and frosted fills (style guide v2).
+     */
+    --overlay-scrim: rgba(34, 30, 27, 0.4);         /* design: --overlay-scrim · behind drawers and sheets */
+    --overlay-scrim-strong: rgba(34, 30, 27, 0.5);  /* design: --overlay-scrim-strong · behind search overlay */
+    --overlay-hotspot: rgba(34, 30, 27, 0.55);      /* design: --overlay-hotspot · hotspot dot, idle */
+    --frost: rgba(255, 254, 252, 0.92);             /* design: --frost · Quick add bar on images */
+    --frost-strong: rgba(255, 254, 252, 0.95);      /* design: --frost-strong · sticky header on scroll */
+
+    /*
+     * Season palette (Home "Shop by colour").
+     */
+    --palette-black: #1F1C1A;
+    --palette-camel: #B08560;
+    --palette-cream: #EFE7D6;
+    --palette-olive: #5B5A48;
+    --palette-navy: #1F2A44;
+    --palette-pink: #E8C4C4;
+
+    /* Home "Shop by" index tints */
+    --cat-women-tint: #EADFD3;
+    --cat-men-tint: #E1DDD6;
+    --cat-kids-tint: #EDE3D6;
+    --cat-new-tint: #F1E2DE;
+
+    /* default image well (placeholder until real product photos) */
+    --image-well: #EFE9E1;
+
+    /*
+     * Type scale (style guide v2). Mobile values here; desktop values in the
+     * min-width: 768px block below. Named --type-* (not --text-*) because
+     * tailwind.css maps them into Tailwind's --text-* namespace, e.g.
+     * --text-h1: var(--type-h1) → class `text-h1`.
+     */
+    --type-display: 40px;       /* design: --text-display · desktop 72 */
+    --type-h1: 32px;            /* design: --text-h1 · desktop 48 */
+    --type-h2: 26px;            /* design: --text-h2 · desktop 36 */
+    --type-h3: 22px;            /* design: --text-h3 · desktop 28 */
+    --type-h4: 19px;            /* design: --text-h4 · desktop 22 */
+    --type-product: 16px;       /* design: --text-product · desktop 18 · Fraunces 500 */
+    --type-total: 22px;         /* design: --text-total · desktop 28 · Fraunces 600 */
+    --type-body-lg: 16px;       /* design: --text-body-lg · desktop 17 */
+    --type-body: 15px;          /* design: --text-body */
+    --type-small: 13px;         /* design: --text-small */
+    --type-caption: 12px;       /* design: --text-caption */
+    --type-label: 13px;         /* design: --text-label · DM Sans 500 */
+    --type-price: 15px;         /* design: --text-price · desktop 16 · DM Sans 600 */
+    --type-button: 15px;        /* design: --text-button · DM Sans 600 */
+    --type-overline: 11px;      /* design: --text-overline · DM Sans 600, uppercase */
+    --type-micro: 10px;         /* design: --text-micro · bag / wishlist counts */
+    --type-hand: 22px;          /* design: --text-hand · desktop 28 */
+
+    /* one-off editorial sizes */
+    --type-hero: 54px;          /* design: --text-hero · Home hero title · desktop 108 */
+    --type-hero-xl: 88px;       /* design: --text-hero-xl · CLP capsule number · desktop 140 */
+    --type-index: 40px;         /* design: --text-index · Home Shop by index · desktop 76 */
+    --type-page-title: 44px;    /* design: --text-page-title · Cart "Your bag" · desktop 80 */
+
+    /*
+     * Motion (style guide v2). Tailwind v4 has no theme namespace for durations,
+     * so use them as `duration-(--duration-fast)`.
+     */
+    --duration-fast: 150ms;     /* hover, press, toggles */
+    --duration-base: 250ms;     /* drawers, quick view, hanger turn */
+    --duration-slow: 400ms;     /* meters, rails rolling in, page turn */
+
+    /*
+     * Z-index (style guide v2). Use as `z-(--z-header)`.
+     */
+    --z-dock: 15;
+    --z-header: 20;
+    --z-overlay: 40;
+    --z-toast: 50;
+}
+
+/* Desktop type scale — design breakpoint 768px (Tailwind `md`). */
+@media (min-width: 768px) {
+    :root {
+        --type-display: 72px;
+        --type-h1: 48px;
+        --type-h2: 36px;
+        --type-h3: 28px;
+        --type-h4: 22px;
+        --type-product: 18px;
+        --type-total: 28px;
+        --type-body-lg: 17px;
+        --type-price: 16px;
+        --type-hand: 28px;
+
+        --type-hero: 108px;
+        --type-hero-xl: 140px;
+        --type-index: 76px;
+        --type-page-title: 80px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --duration-base: 150ms;
+        --duration-slow: 150ms;
+    }
+}

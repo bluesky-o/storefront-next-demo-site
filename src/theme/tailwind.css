@@ -1,0 +1,324 @@
+@theme inline {
+    /* Font families (style guide v2) */
+    --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; /* design: --font-body */
+    --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif; /* design: --font-display */
+    --font-mono: ui-monospace, 'Courier New', monospace; /* not in design: system monospace */
+    --font-cursive: 'Caveat', cursive; /* design: --font-hand · CLP notes only, never UI */
+
+    /* Error page tokens */
+    --text-error-status: 12rem;  /* Large status code display for error pages */
+
+    /* -- shape tokens -- shadcn primitives use rounded-ui / shadow-ui so
+       the corner radius and drop shadow re-skin per vertical without
+       touching the primitive class strings. The --ui-* source tokens are
+       defined in tokens/core.css (per vertical); these lines bridge them
+       into Tailwind's utility namespaces. border-ui is defined via @utility
+       below (no automatic namespace for border-width in Tailwind v4). */
+    --radius-ui: var(--ui-radius);
+    --shadow-ui: var(--ui-shadow);
+
+    /* -- type scale (style guide v2) --
+       Sizes are responsive: the --type-* values switch at 768px in tokens/brand.css.
+       Each size carries the design's line-height, letter-spacing and weight, so
+       `text-h1` alone gives the full style. Add `font-serif` / `font-sans` for the family. */
+    --text-display: var(--type-display);
+    --text-display--line-height: 1.02;
+    --text-display--letter-spacing: -0.02em;
+    --text-h1: var(--type-h1);
+    --text-h1--line-height: 1.1;
+    --text-h1--letter-spacing: -0.02em;
+    --text-h2: var(--type-h2);
+    --text-h2--line-height: 1.1;
+    --text-h3: var(--type-h3);
+    --text-h3--line-height: 1.1;
+    --text-h4: var(--type-h4);
+    --text-h4--line-height: 1.25;
+    --text-product: var(--type-product);
+    --text-product--line-height: 1.25;
+    --text-product--font-weight: 500;
+    --text-total: var(--type-total);
+    --text-total--line-height: 1.25;
+    --text-total--font-weight: 600;
+    --text-body-lg: var(--type-body-lg);
+    --text-body-lg--line-height: 1.6;
+    --text-body: var(--type-body);
+    --text-body--line-height: 1.6;
+    --text-small: var(--type-small);
+    --text-small--line-height: 1.5;
+    --text-caption: var(--type-caption);
+    --text-caption--line-height: 1.5;
+    --text-label: var(--type-label);
+    --text-label--line-height: 1.5;
+    --text-label--font-weight: 500;
+    --text-price: var(--type-price);
+    --text-price--line-height: 1.25;
+    --text-price--font-weight: 600;
+    --text-button: var(--type-button);
+    --text-button--line-height: 1.25;
+    --text-button--font-weight: 600;
+    --text-overline: var(--type-overline);
+    --text-overline--line-height: 1.5;
+    --text-overline--letter-spacing: 0.12em;
+    --text-overline--font-weight: 600;
+    --text-micro: var(--type-micro);
+    --text-micro--line-height: 1.25;
+    --text-hand: var(--type-hand);
+    --text-hand--line-height: 1.25;
+    --text-hero: var(--type-hero);
+    --text-hero--line-height: 1.02;
+    --text-hero--letter-spacing: -0.04em;
+    --text-hero-xl: var(--type-hero-xl);
+    --text-hero-xl--line-height: 1.02;
+    --text-hero-xl--letter-spacing: -0.04em;
+    --text-index: var(--type-index);
+    --text-index--line-height: 1.02;
+    --text-index--letter-spacing: -0.04em;
+    --text-page-title: var(--type-page-title);
+    --text-page-title--line-height: 1.02;
+    --text-page-title--letter-spacing: -0.04em;
+
+    /* line-height and letter-spacing on their own: leading-heading, tracking-overline-wide… */
+    --leading-display: 1.02;
+    --leading-heading: 1.1;
+    --leading-tight: 1.25;
+    --leading-body: 1.6;
+    --leading-small: 1.5;
+    --tracking-display: -0.02em;
+    --tracking-hero: -0.04em;
+    --tracking-overline: 0.12em;
+    --tracking-overline-wide: 0.18em;
+
+    /* -- radius (style guide v2): rounded-badge, rounded-control, rounded-card, rounded-bar.
+       rounded-full already exists in Tailwind. -- */
+    --radius-badge: 4px;
+    --radius-control: 6px;      /* buttons, inputs */
+    --radius-card: 8px;
+    --radius-bar: 10px;         /* bars, sheets, large panels */
+
+    /* -- control heights (style guide v2): h-control-sm / -md / -lg, min-h-touch -- */
+    --spacing-control-sm: 36px;
+    --spacing-control-md: 48px; /* default button / input */
+    --spacing-control-lg: 52px; /* checkout, hero CTA */
+    --spacing-touch: 44px;
+
+    /* -- shadows (style guide v2): shadow-sticky, shadow-popover, shadow-drawer… -- */
+    --shadow-hotspot: 0 4px 14px rgba(0, 0, 0, 0.25);
+    --shadow-handle: 0 6px 18px rgba(0, 0, 0, 0.25);
+    --shadow-chip: 0 4px 10px rgba(34, 30, 27, 0.12);       /* swing tags */
+    --shadow-sticky: 0 8px 24px rgba(34, 30, 27, 0.08);     /* elevation 1 */
+    --shadow-toast: 0 8px 24px rgba(34, 30, 27, 0.14);
+    --shadow-card-lift: 0 10px 24px rgba(34, 30, 27, 0.12); /* polaroid cards */
+    --shadow-popover: 0 12px 30px rgba(34, 30, 27, 0.18);   /* hotspot card */
+    --shadow-dock: 0 12px 30px rgba(34, 30, 27, 0.25);      /* bag dock */
+    --shadow-modal: 0 24px 60px rgba(34, 30, 27, 0.3);      /* search overlay */
+    --shadow-drawer: -20px 0 50px rgba(34, 30, 27, 0.25);   /* quick view, desktop */
+    --shadow-sheet: 0 -20px 50px rgba(34, 30, 27, 0.25);    /* bottom sheet, mobile */
+    --shadow-bar-up: 0 -6px 24px rgba(34, 30, 27, 0.08);    /* mobile sticky summary */
+    --shadow-tab-dark: 0 2px 0 var(--dark-line-strong);     /* pressed tab on dark */
+
+    /* -- core colors -- */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary-hover: var(--primary-hover);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary-hover: var(--secondary-hover);
+    --color-tertiary: var(--tertiary);
+    --color-tertiary-foreground: var(--tertiary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted-hover: var(--muted-hover);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-border: var(--border);
+    --color-border-subtle: var(--border-subtle);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-separator: var(--separator);
+    --color-separator-foreground: var(--separator-foreground);
+    --color-rating: var(--rating);
+    --color-rating-foreground: var(--rating-foreground);
+    --color-placeholder: var(--placeholder);
+    --color-disabled: var(--disabled);
+
+    /* -- status & feedback colors -- */
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-success-strong: var(--success-strong);
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-bg: var(--warning-bg);
+    --color-warning-border: var(--warning-border);
+    --color-active-bg: var(--active-bg);
+    --color-active-foreground: var(--active-foreground);
+    --color-account-action-destructive: var(--account-action-destructive);
+    --color-account-action-destructive-foreground: var(--account-action-destructive-foreground);
+    --color-account-action-primary: var(--account-action-primary);
+    --color-account-action-primary-foreground: var(--account-action-primary-foreground);
+    --color-status-positive: var(--status-positive);
+    --color-status-warning: var(--status-warning);
+    --color-status-critical: var(--status-critical);
+    --color-status-critical-strong: var(--status-critical-strong);
+    --color-status-critical-bg: var(--status-critical-bg);
+    --color-status-critical-foreground: var(--status-critical-foreground);
+    --color-status-critical-border: var(--status-critical-border);
+    --color-status-info: var(--status-info);
+
+    /* -- swatch colors -- */
+    --color-swatch-group-bg: var(--swatch-group-bg);
+    --color-swatch-bg: var(--swatch-bg);
+    --color-swatch-bg-selected: var(--swatch-bg-selected);
+    --color-swatch-border: var(--swatch-border);
+    --color-swatch-border-selected: var(--swatch-border-selected);
+    --color-swatch-text: var(--swatch-text);
+    --color-swatch-text-selected: var(--swatch-text-selected);
+
+    /* -- review verified badge (themeable) -- */
+    --color-review-verified-bg: var(--review-verified-bg);
+    --color-review-verified-text: var(--review-verified-text);
+
+    /* -- payment provider colors -- */
+    --color-paypal-gold: var(--paypal-gold);
+    --color-venmo-blue: var(--venmo-blue);
+
+    /* -- product badge -- */
+    --color-product-badge-promo-bg: var(--product-badge-promo-bg);
+    --color-product-badge-promo-foreground: var(--product-badge-promo-foreground);
+
+    /* -- header & navigation -- */
+    --color-header-background: var(--header-background);
+    --color-header-foreground: var(--header-foreground);
+    --color-header-border: var(--header-border);
+    --color-header-divider: var(--header-divider);
+    --color-header-menu-background: var(--header-menu-background);
+    --color-header-menu-foreground: var(--header-menu-foreground);
+    --color-header-menu-border: var(--header-menu-border);
+    --color-header-menu-hover-background: var(--header-menu-hover-background);
+    --color-header-menu-active-background: var(--header-menu-active-background);
+    --color-header-menu-icon: var(--header-menu-icon);
+
+    /* -- footer -- */
+    --color-footer-background: var(--footer-background);
+    --color-footer-foreground: var(--footer-foreground);
+
+    /* -- newsletter band -- */
+    --color-newsletter-background: var(--newsletter-background);
+    --color-newsletter-foreground: var(--newsletter-foreground);
+
+    /* -- agentic palette -- */
+    --color-agentic: var(--agentic);
+    --color-agentic-foreground: var(--agentic-foreground);
+    --color-agentic-primary: var(--agentic-primary);
+    --color-agentic-primary-foreground: var(--agentic-primary-foreground);
+    --color-agentic-accent: var(--agentic-accent);
+    --color-agentic-accent-foreground: var(--agentic-accent-foreground);
+    --color-agentic-border: var(--agentic-border);
+    --color-agentic-ring: var(--agentic-ring);
+    --color-agentic-muted: var(--agentic-muted);
+    --color-agentic-muted-foreground: var(--agentic-muted-foreground);
+    --color-agentic-border-subtle: var(--agentic-border-subtle);
+    --color-agentic-message-output: var(--agentic-message-output);
+    --color-agentic-message-input: var(--agentic-message-input);
+
+    /* -- filter -- */
+    --color-filter-selected: var(--filter-selected);
+    --color-filter-selected-border: var(--filter-selected-border);
+
+    /* -- market street brand colors -- */
+    --color-brand-black: var(--brand-black);
+    --color-brand-black-off: var(--brand-black-off);
+    --color-brand-black-charcoal: var(--brand-black-charcoal);
+    --color-brand-white: var(--brand-white);
+    --color-brand-white-bone: var(--brand-white-bone);
+    --color-brand-white-ivory: var(--brand-white-ivory);
+    --color-brand-gray-50: var(--brand-gray-50);
+    --color-brand-gray-100: var(--brand-gray-100);
+    --color-brand-gray-200: var(--brand-gray-200);
+    --color-brand-gray-300: var(--brand-gray-300);
+    --color-brand-gray-400: var(--brand-gray-400);
+    --color-brand-gray-500: var(--brand-gray-500);
+    --color-brand-gray-600: var(--brand-gray-600);
+    --color-brand-gray-700: var(--brand-gray-700);
+    --color-brand-gray-800: var(--brand-gray-800);
+    --color-brand-gray-900: var(--brand-gray-900);
+
+    /* -- dark surfaces -- */
+    --color-dark-bg: var(--dark-bg);
+    --color-dark-panel: var(--dark-panel);
+    --color-dark-tile: var(--dark-tile);
+    --color-dark-line: var(--dark-line);
+    --color-dark-line-strong: var(--dark-line-strong);
+    --color-dark-underline: var(--dark-underline);
+    --color-on-dark-text: var(--on-dark-text);
+    --color-on-dark-muted: var(--on-dark-muted);
+    --color-on-dark-accent: var(--on-dark-accent);
+
+    /* -- lines, links and editorial -- */
+    --color-link-underline: var(--link-underline);
+    --color-rose-border: var(--rose-border);
+    --color-rose-line: var(--rose-line);
+    --color-rose-well: var(--rose-well);
+    --color-paper-text: var(--paper-text);
+    --color-pencil: var(--pencil);
+    --color-notebook-paper: var(--notebook-paper);
+    --color-notebook-margin: var(--notebook-margin);
+    --color-trend-up-bg: var(--trend-up-bg);
+    --color-trend-down-bg: var(--trend-down-bg);
+    --color-buckle: var(--buckle);
+
+    /* -- overlays and frosted fills -- */
+    --color-overlay-scrim: var(--overlay-scrim);
+    --color-overlay-scrim-strong: var(--overlay-scrim-strong);
+    --color-overlay-hotspot: var(--overlay-hotspot);
+    --color-frost: var(--frost);
+    --color-frost-strong: var(--frost-strong);
+
+    /* -- season palette, category tints, image well -- */
+    --color-palette-black: var(--palette-black);
+    --color-palette-camel: var(--palette-camel);
+    --color-palette-cream: var(--palette-cream);
+    --color-palette-olive: var(--palette-olive);
+    --color-palette-navy: var(--palette-navy);
+    --color-palette-pink: var(--palette-pink);
+    --color-cat-women-tint: var(--cat-women-tint);
+    --color-cat-men-tint: var(--cat-men-tint);
+    --color-cat-kids-tint: var(--cat-kids-tint);
+    --color-cat-new-tint: var(--cat-new-tint);
+    --color-image-well: var(--image-well);
+
+    /* -- scoped section themes (tokens/themes.css): only resolve inside [data-chapter] / [data-door] -- */
+    --color-chapter-bg: var(--chapter-bg);
+    --color-chapter-panel: var(--chapter-panel);
+    --color-chapter-ink: var(--chapter-ink);
+    --color-chapter-muted: var(--chapter-muted);
+    --color-chapter-accent: var(--chapter-accent);
+    --color-chapter-figure: var(--chapter-figure);
+    --color-door-tint: var(--door-tint);
+    --color-door-figure: var(--door-figure);
+    --color-door-tab: var(--door-tab);
+    --color-door-tab-ink: var(--door-tab-ink);
+}
+
+@utility border-ui {
+    border-style: solid;
+    border-width: var(--ui-border-width);
+}
+

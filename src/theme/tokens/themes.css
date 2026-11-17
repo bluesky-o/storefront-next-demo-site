@@ -1,0 +1,73 @@
+/*
+ * Scoped section themes (style guide v2).
+ * These are not global: each block applies only inside an element carrying the
+ * matching data attribute. tailwind.css maps the variables to classes such as
+ * bg-chapter-bg / text-chapter-ink / bg-door-tint, which resolve to the values
+ * of the nearest themed ancestor.
+ */
+
+/* Home hero chapter themes: put data-chapter on the hero section */
+[data-chapter='new-season'] {
+    --chapter-bg: #F1E9DF;
+    --chapter-panel: #E4D8CA;
+    --chapter-ink: #221E1B;
+    --chapter-muted: #655E56;
+    --chapter-accent: #5C1A1B;
+    --chapter-figure: #2A2522;
+}
+
+[data-chapter='modern-wardrobe'] {
+    --chapter-bg: #ECE7E0;
+    --chapter-panel: #DDD6CC;
+    --chapter-ink: #221E1B;
+    --chapter-muted: #655E56;
+    --chapter-accent: #5C1A1B;
+    --chapter-figure: #2E2926;
+}
+
+[data-chapter='after-hours'] {
+    --chapter-bg: #1E1A18;
+    --chapter-panel: #2C2522;
+    --chapter-ink: #F3EDE6;
+    --chapter-muted: #C3B8AC;
+    --chapter-accent: #E3B9B1;
+    --chapter-figure: #6B3A36;
+}
+
+[data-chapter='new-perspectives'] {
+    --chapter-bg: #F3E6E2;
+    --chapter-panel: #E8D3CD;
+    --chapter-ink: #221E1B;
+    --chapter-muted: #655E56;
+    --chapter-accent: #5C1A1B;
+    --chapter-figure: #3A2B28;
+}
+
+/* CLP door themes: put data-door on each door / tab */
+[data-door='dresses'] {
+    --door-tint: #E9DFD3;
+    --door-figure: #2A2522;
+    --door-tab: #5C1A1B;
+    --door-tab-ink: #FFFFFF;
+}
+
+[data-door='knitwear'] {
+    --door-tint: #E4E6EB;
+    --door-figure: #1F2A44;
+    --door-tab: #7A3E3A;
+    --door-tab-ink: #FFFFFF;
+}
+
+[data-door='accessories'] {
+    --door-tint: #EDE6DA;
+    --door-figure: #CDBFA6;
+    --door-tab: #D8C7AA;
+    --door-tab-ink: #221E1B;
+}
+
+[data-door='new-in'] {
+    --door-tint: #EFE6DB;
+    --door-figure: #9A6B45;
+    --door-tab: #E3B9B1;
+    --door-tab-ink: #221E1B;
+}
